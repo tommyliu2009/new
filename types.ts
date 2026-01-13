@@ -1,6 +1,7 @@
 export enum NavigationPage {
   HOME = 'HOME',
   NEWS = 'NEWS',
+  PRODUCTS = 'PRODUCTS',
   RESOURCES = 'RESOURCES',
   COURSES = 'COURSES',
   ABOUT = 'ABOUT'

@@ -13,7 +13,8 @@ import {
   CheckCircle,
   Phone,
   Globe,
-  ExternalLink
+  ExternalLink,
+  ShoppingBag
 } from 'lucide-react';
 
 // Mock Data
@@ -110,6 +111,23 @@ const MEDIA_SOURCES = [
   }
 ];
 
+const PRODUCTS_DATA = [
+  {
+    id: 1,
+    title: '貓裏紅茶',
+    url: 'http://www.mltea.com.tw/',
+    description: '深耕苗栗在地的優質紅茶品牌，結合新住民文化與在地茶產業，以獨特風味展現這片土地的熱情與故事。',
+    tag: '特色茶飲'
+  },
+  {
+    id: 2,
+    title: '新住民好物網',
+    url: 'http://60.249.147.185/NewGoods',
+    description: '嚴選新住民特色商品與創意好物，提供一個展現多元文化魅力的優質平台，讓更多人看見新住民的創造力。',
+    tag: '綜合平台'
+  }
+];
+
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<NavigationPage>(NavigationPage.HOME);
 
@@ -176,6 +194,45 @@ const App: React.FC = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        );
+
+      case NavigationPage.PRODUCTS:
+        return (
+          <div className="container mx-auto px-4 py-12">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-orange-500 pl-4">新住民產品與服務</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {PRODUCTS_DATA.map((product) => (
+                <div key={product.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-100 flex flex-col">
+                  <div className="h-64 bg-gray-200 relative overflow-hidden group">
+                    <img 
+                      src={`https://picsum.photos/600/400?random=${product.id + 50}`} 
+                      alt={product.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    <span className="absolute top-4 right-4 bg-orange-600 text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-md">
+                      {product.tag}
+                    </span>
+                  </div>
+                  <div className="p-8 flex-grow flex flex-col">
+                    <div className="flex items-center mb-4">
+                      <ShoppingBag className="w-5 h-5 text-orange-500 mr-2" />
+                      <h3 className="text-2xl font-bold text-gray-900">{product.title}</h3>
+                    </div>
+                    <p className="text-gray-600 mb-8 leading-relaxed flex-grow text-lg">{product.description}</p>
+                    <a 
+                      href={product.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-full bg-white border-2 border-orange-600 text-orange-600 font-bold py-3.5 rounded-xl hover:bg-orange-50 transition-colors flex items-center justify-center text-lg"
+                    >
+                      前往網站 <ExternalLink className="ml-2 w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         );

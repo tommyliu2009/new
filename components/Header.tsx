@@ -13,6 +13,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
   const navItems = [
     { label: '首頁', value: NavigationPage.HOME },
     { label: '新住民新聞', value: NavigationPage.NEWS },
+    { label: '新住民產品與服務', value: NavigationPage.PRODUCTS },
     { label: '創業資源與補助', value: NavigationPage.RESOURCES },
     { label: '課程資訊', value: NavigationPage.COURSES },
     { label: '關於協會', value: NavigationPage.ABOUT },
